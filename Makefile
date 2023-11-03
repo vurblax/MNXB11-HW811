@@ -3,8 +3,8 @@ CXXWARNINGS := -Wall -Wextra -Werror -Wno-error=stringop-truncation
 CXXOPT := -O3
 CXXSTD := -std=c++17
 INCLUDES := -I include -I ./external/include
-CXXFLAGS := $(CXXWARNINGS) $(CXXSTD) $(CXXOPT) $(INCLUDES)
-LDFLAGS :=
+CXXFLAGS := $(CXXWARNINGS) $(CXXSTD) $(CXXOPT) $(INCLUDES) $(shell root-config --cflags)
+LDFLAGS := $(shell root-config --libs)
 
 .PHONY: all clean
 
