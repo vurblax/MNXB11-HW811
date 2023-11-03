@@ -30,6 +30,6 @@ The fmt library is **not** a header-only library, so some extra steps are needed
 2. At the repo root, create a build/ directory.
 3. Within build/ create a directory called fmt.
 4. Cd into build/fmt/ and run the following command and its arguments (note that you need to change the path to the actual path): `cmake /path/to/source/directory/for/fmt -DCMAKE_INSTALL_PREFIX=../../external`
-5. Run make to build the library.
-6. Run make install to install the library.
+5. Run `make` to build the library.
+6. Run `make install` to install the library.
 7. Done.
