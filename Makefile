@@ -3,8 +3,10 @@ CXXWARNINGS := -Wall -Wextra -Werror -Wno-error=stringop-truncation
 CXXOPT := -O3
 CXXSTD := -std=c++17
 INCLUDES := -I include -I ./external/include
-CXXFLAGS := $(CXXWARNINGS) $(CXXSTD) $(CXXOPT) $(INCLUDES) $(shell root-config --cflags)
+LIB_DIRS := -L ./external/lib64
+CXXFLAGS := $(CXXWARNINGS) $(CXXSTD) $(CXXOPT) $(INCLUDES) $(LIB_DIRS) $(shell root-config --cflags)
 LDFLAGS := $(shell root-config --libs)
+LIBS := -l fmt
 
 .PHONY: all clean
 
@@ -17,7 +19,7 @@ all: main
 # Remove the Example object file when you are done looking at it, it doesn't
 # contribute to the executable!
 main: main.cxx 
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS) $(LIBS)
 
 src/%.o: src/%.cxx
 	$(CXX) $(CXXFLAGS) $^ -c -o $@
