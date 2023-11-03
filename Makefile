@@ -1,5 +1,5 @@
 CXX := g++
-CXXWARNINGS := -Wall -Wextra -Werror
+CXXWARNINGS := -Wall -Wextra -Werror -Wno-error=stringop-truncation
 CXXOPT := -O3
 CXXSTD := -std=c++17
 INCLUDES := -I include -I ./external/include
@@ -16,7 +16,7 @@ all: main
 #
 # Remove the Example object file when you are done looking at it, it doesn't
 # contribute to the executable!
-main: main.cxx src/Example.o
+main: main.cxx 
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
 src/%.o: src/%.cxx
